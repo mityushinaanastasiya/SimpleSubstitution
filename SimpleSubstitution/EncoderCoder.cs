@@ -9,44 +9,51 @@ namespace SimpleSubstitution
 {
     class EncoderCoder
     {
+        int line = 1;
+        int position = 1;
 
-        public int? readSymbol (StreamReader streamReaderPlanText)
+        public int readSymbol (StreamReader streamReaderPlanText)
         {
-            if (streamReaderPlanText.Peek() != 32)
+            if (streamReaderPlanText.Peek() != 0)
             {
                 //char[] bf = new char[1];
                 //streamReaderPlanText.Read(bf, 0, 1);
                 return streamReaderPlanText.Read();
             }
-            return null;
+            else
+            {
+                return -1;
+            }
         }
 
         public string getCode(int? currentSymbol, StreamReader streamReaderKey)
         {
-            int line = 1;
-            int position = 1;
             while (streamReaderKey.Peek() != currentSymbol)
             {
-                if (streamReaderKey.Peek() == 10)
+                switch (streamReaderKey.Peek())
                 {
-                    line++;
-                    position = 1;
-                    streamReaderKey.Read();
+                    case 0:
+                        streamReaderKey.BaseStream.Position = 0;
+                        line = 1;
+                        position = 1;
+                        streamReaderKey.Read();
+                        position++;
+                        break;
+                    case 10:
+                        line++;
+                        position = 1;
+                        streamReaderKey.Read();
+                        break;
+                    default:
+                        streamReaderKey.Read();
+                        position++;
+                        break;
                 }
-                else
-                {
+            }
+                    string result = line.ToString() + ' ' + position.ToString() + ' ';
                     streamReaderKey.Read();
                     position++;
-                }
-            }
-            if (streamReaderKey.Peek() == currentSymbol)
-            {
-                string result = line.ToString() + ' ' + position.ToString() + ' ';
-                streamReaderKey.Read();
-                position++;
-                return result;
-            }
-            return "-1";
+                    return result;    
         }
 
         public void encrypt ()
@@ -57,11 +64,11 @@ namespace SimpleSubstitution
             StreamReader streamReaderPlanText = new StreamReader(plainTextPath, Encoding.Default);
             StreamWriter streamWriterCipherTextPath = new StreamWriter(cipherTextPath);
             StreamReader streamReaderKey = new StreamReader(keyPath, Encoding.Default);
-                for (int i = 0; i<2; i++)
+            int currentSymbol = readSymbol(streamReaderPlanText);
+            while (currentSymbol !=-1)
             {
-                int? currentSymbol = readSymbol(streamReaderPlanText);
                 streamWriterCipherTextPath.Write(getCode(currentSymbol, streamReaderKey));
-
+                currentSymbol = readSymbol(streamReaderPlanText);
             }
             streamReaderPlanText.Close();
             streamWriterCipherTextPath.Close();
