@@ -38,9 +38,9 @@ namespace SimpleSubstitution
                 switch (streamReaderKey.Peek())
                 {
                     case -1:
-                        streamReaderKey.BaseStream.Position = 0;
-                        
-line = 1;
+                        streamReaderKey = new StreamReader(keyPath, Encoding.Default);
+                        //streamReaderKey.BaseStream.Position = 0;                  
+                        line = 1;
                         position = 1;
                         streamReaderKey.Read();
                         position++;
@@ -100,7 +100,7 @@ line = 1;
                             countObj++;
                             break;
                         case 1:
-                            streamWriterplain2TextPath.Write(getSymbol(line, pos));
+                            streamWriterplain2TextPath.Write(getSymbol(line, pos, streamReaderKey));
                             line = "";
                             pos = "";
                             countObj = 0;
@@ -130,9 +130,31 @@ line = 1;
 
         }
 
-        private char getSymbol(string line, string pos)
+        private char getSymbol(string lineString, string posString, StreamReader streamReaderKey)
         {
-            return 'h';
+            int line = Convert.ToInt32(lineString);
+            int pos = Convert.ToInt32(posString);
+            int currentLine=1, currentPos=1;
+            int currentSymbol=-1;
+            streamReaderKey = new StreamReader(keyPath, Encoding.Default);
+            //streamReaderKey.BaseStream.Position = 0;
+            while (currentLine<line)
+            {
+                if (streamReaderKey.Peek() == 10)
+                {
+                    currentLine++;
+                }
+                streamReaderKey.Read();
+            }
+
+            while (currentPos <pos)
+            {
+                currentPos++;
+                streamReaderKey.Read();
+
+            }
+            currentSymbol = streamReaderKey.Read();
+            return Convert.ToChar(currentSymbol) ;
         }
     }
 }
