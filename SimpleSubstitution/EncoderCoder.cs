@@ -11,6 +11,11 @@ namespace SimpleSubstitution
     {
         int line = 1;
         int position = 1;
+        string plainTextPath = @".\text\plaintext.txt";
+        string cipherTextPath = @".\text\ciphertext.txt";
+        string keyPath = @".\text\key.txt";
+        string plain2TextPath = @".\text\plaintext2.txt";
+        
 
         public int readSymbol (StreamReader streamReaderPlanText)
         {
@@ -32,9 +37,10 @@ namespace SimpleSubstitution
             {
                 switch (streamReaderKey.Peek())
                 {
-                    case 0:
+                    case -1:
                         streamReaderKey.BaseStream.Position = 0;
-                        line = 1;
+                        
+line = 1;
                         position = 1;
                         streamReaderKey.Read();
                         position++;
@@ -56,11 +62,10 @@ namespace SimpleSubstitution
                     return result;    
         }
 
+
+
         public void encrypt ()
         {
-            string plainTextPath = @".\text\plaintext.txt";
-            string cipherTextPath = @".\text\ciphertext.txt";
-            string keyPath = @".\text\key.txt";
             StreamReader streamReaderPlanText = new StreamReader(plainTextPath, Encoding.Default);
             StreamWriter streamWriterCipherTextPath = new StreamWriter(cipherTextPath);
             StreamReader streamReaderKey = new StreamReader(keyPath, Encoding.Default);
@@ -77,7 +82,57 @@ namespace SimpleSubstitution
 
         public void toDecipher ()
         {
+            StreamReader streamReaderCipherText = new StreamReader(cipherTextPath, Encoding.Default);
+            StreamReader streamReaderKey = new StreamReader(keyPath, Encoding.Default);
+            StreamWriter streamWriterplain2TextPath = new StreamWriter(plain2TextPath);
+            int currentSymbol = readSymbol(streamReaderCipherText);
+            int[] symbol = new int[2];
+            string line = "";
+            string pos = "";
+            int countObj = 0;
+            while (currentSymbol != -1)
+            {
+                if (currentSymbol == 32)
+                {
+                    switch (countObj)
+                    {
+                        case 0:
+                            countObj++;
+                            break;
+                        case 1:
+                            streamWriterplain2TextPath.Write(getSymbol(line, pos));
+                            line = "";
+                            pos = "";
+                            countObj = 0;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (countObj)
+                    {
+                        case 0:
+                            int sm = currentSymbol - 48;
+                            line = line + sm.ToString();
+                            break;
+                        case 1:
+                            int p = currentSymbol - 48;
+                            pos = pos + p.ToString();
+                            break;
 
+                    }
+                }
+                currentSymbol = readSymbol(streamReaderCipherText);
+            }
+            streamReaderCipherText.Close();
+            streamReaderKey.Close();
+            streamWriterplain2TextPath.Close();
+
+        }
+
+        private char getSymbol(string line, string pos)
+        {
+            return 'h';
         }
     }
 }

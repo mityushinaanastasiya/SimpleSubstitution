@@ -18,6 +18,7 @@ namespace SimpleSubstitution
             Application.SetCompatibleTextRenderingDefault(false);
             EncoderCoder encoderCoder = new EncoderCoder();
             encoderCoder.encrypt();
+            encoderCoder.toDecipher();
             Application.Run(new Form1());
             
         }

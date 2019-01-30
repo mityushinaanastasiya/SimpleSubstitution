@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://younglinux.info/python/task/chr -->
+<html lang="ru" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " class="js adaptivetheme no-touchevents details js fa-loaded" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+<meta name="title" content="Вывод таблицы символов (английской и русской)">
+<link rel="canonical" href="https://younglinux.info/python/task/chr">
+<meta name="description" content="В Python v.3 для строк используется кодировка Unicode. (Следует помнить, что в Python, в отличие от других языков программирования, вообще нет такого типа как одиночный символ; любой символ это строка, длина которой равна 1.)
+
+Первые 128 символов по таблице Unicode такие же как и в таблице символов ASCII. Выведим их (начиная с пробела - 32-й символ). Чтобы привести вывод к табличной форме будем переходить на новую строку после каждого десятого символа (инструкция if в коде ниже).
+
+Функция chr() возвращает символ из таблицы Unicode, соответствующий переданному коду-числу.">
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="https://younglinux.info/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="revision" href="https://younglinux.info/python/task/chr">
+
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/"><title>Вывод таблицы символов (английской и русской)</title>
+    <link rel="stylesheet" href="./Вывод таблицы символов (английской и русской)_files/css_JuLJzljXtVpKwIASsH8izXf9v0FCzjUZjJqgLyn7S_g.css" media="all">
+<link rel="stylesheet" href="./Вывод таблицы символов (английской и русской)_files/css_6Xk8_64jgKlbzKKFEWOi3zAKa0PyrsMXFZzSuG6QCdA.css" media="all">
+<link rel="stylesheet" href="./Вывод таблицы символов (английской и русской)_files/css" media="all">
+<link rel="stylesheet" href="./Вывод таблицы символов (английской и русской)_files/css_JMw2QTnRTe52uAdCkmB7jgKMvZdioskObdXTcw2NVvE.css" media="all">
+<link rel="stylesheet" href="./Вывод таблицы символов (английской и русской)_files/css_nOyYcpvDc_nVEtvL4zYybFPQt5d_5gaHA-p2D6n6KPU.css" media="all">
+
+    <script type="text/javascript" async="" src="./Вывод таблицы символов (английской и русской)_files/analytics.js.Без названия"></script><script src="./Вывод таблицы символов (английской и русской)_files/modernizr.min.js.Без названия"></script>
+
+  </head><body role="document" class="layout-type--flex-builder user-logged-out path-not-frontpage path-node path-python-task-chr page-node-type--python-task site-name--лаборатория-линуксоида theme-name--second ms-dropmenu bp--at-core-simple-wide">
+        <a href="https://younglinux.info/python/task/chr#main-content" class="visually-hidden focusable skip-link">Перейти к основному содержанию</a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+    
+<div class="page js-layout">
+  <div data-at-row="leaderboard" class="l-leaderboard l-row">
+  
+  <div class="l-pr page__row pr-leaderboard" id="leaderboard">
+    <div class="l-rw regions container pr-leaderboard__rw arc--1 hr--1" data-at-regions="">
+      <div data-at-region="1" data-at-block-count="1" class="l-r region pr-leaderboard__leaderboard"><div id="block-scetciki-2" class="l-bl block block-config-provider--block-content block-plugin-id--block-content-4cdc11bd-93cd-4569-8c5e-31db5e40aa1d block--type-basic block--view-mode-full">
+  <div class="block__inner">
+
+    <div class="block__content"><div class="clearfix text-formatted field field-block-content--body field-formatter-text-default field-name-body field-type-text-with-summary field-label-hidden has-single"><div class="field__items"><div class="field__item"><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Вывод таблицы символов (английской и русской)_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-8358914-1');
+</script>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+    </div>
+  </div>
+  
+</div>
+<div data-at-row="header" class="l-header l-row">
+  
+  <header class="l-pr page__row pr-header regions-multiple" role="banner" id="masthead">
+    <div class="l-rw regions container pr-header__rw arc--2 hr--1-2" data-at-regions="">
+      <div data-at-region="1" data-at-block-count="1" class="l-r region pr-header__header-first"><div id="block-second-branding" class="l-bl block block-branding block-config-provider--system block-plugin-id--system-branding-block has-logo has-name">
+  <div class="block__inner block-branding__inner">
+
+    <div class="block__content block-branding__content site-branding"><a href="https://younglinux.info/" title="Главная" itemprop="url" rel="home" class="site-branding__logo-link"><img src="./Вывод таблицы символов (английской и русской)_files/logo_0_0.png" alt="Главная" itemprop="logo" class="site-branding__logo-img"></a><span class="site-branding__text"><strong class="site-branding__name"><a href="https://younglinux.info/" title="Главная" itemprop="url" rel="home" class="site-branding__name-link">Лаборатория линуксоида</a></strong></span></div></div>
+</div>
+</div><div data-at-region="2" data-at-block-count="1" class="l-r region pr-header__header-second"><div id="block-kursysotvetami" class="l-bl block block-config-provider--block-content block-plugin-id--block-content-00fb7d19-ef33-409d-aa28-e46fba8abfe7 block--type-basic block--view-mode-full">
+  <div class="block__inner">
+
+    <div class="block__content"><div class="clearfix text-formatted field field-block-content--body field-formatter-text-default field-name-body field-type-text-with-summary field-label-hidden has-single"><div class="field__items"><div class="field__item"><p class="text-align-right"><a href="https://younglinux.info/store/store.html" rel="nofollow">Курсы в PDF <svg height="24" viewBox="0 0 48 48" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 36c-2.21 0-3.98 1.79-3.98 4s1.77 4 3.98 4 4-1.79 4-4-1.79-4-4-4zM2 4v4h4l7.19 15.17-2.7 4.9c-.31.58-.49 1.23-.49 1.93 0 2.21 1.79 4 4 4h24v-4H14.85c-.28 0-.5-.22-.5-.5 0-.09.02-.17.06-.24L16.2 26h14.9c1.5 0 2.81-.83 3.5-2.06l7.15-12.98c.16-.28.25-.61.25-.96 0-1.11-.9-2-2-2H10.43l-1.9-4H2zm32 32c-2.21 0-3.98 1.79-3.98 4s1.77 4 3.98 4 4-1.79 4-4-1.79-4-4-4z"></path></svg></a></p>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+    </div>
+  </header>
+  
+</div>
+<div data-at-row="highlighted" class="l-highlighted l-row">
+  
+  <div class="l-pr page__row pr-highlighted" id="highlighted">
+    <div class="l-rw regions container pr-highlighted__rw arc--1 hr--1" data-at-regions="">
+      <div data-at-region="1" data-at-block-count="1" class="l-r region pr-highlighted__highlighted"><div class="l-bl block--messages" data-drupal-messages=""></div></div>
+    </div>
+  </div>
+  
+</div>
+<div data-at-row="content-prefix" class="l-content-prefix l-row">
+  
+  <div class="l-pr page__row pr-content-prefix" id="content-prefix">
+    <div class="l-rw regions container pr-content-prefix__rw arc--1 hr--1" data-at-regions="">
+      <div data-at-region="1" data-at-block-count="1" class="l-r region pr-content-prefix__content-prefix"><div role="navigation" aria-labelledby="block-second-breadcrumbs-menu" id="block-second-breadcrumbs" class="l-bl block block-breadcrumbs block-config-provider--system block-plugin-id--system-breadcrumb-block">
+  <div class="block__inner">
+
+    
+    <h2 class="visually-hidden block__title block-breadcrumbs__title" id="block-second-breadcrumbs-menu"><span>Breadcrumbs</span></h2>
+    
+      <div class="breadcrumb">
+    <nav class="is-responsive is-horizontal" data-at-responsive-list="">
+      <div class="is-responsive__list">
+        <h3 class="visually-hidden breadcrumb__title">You are here:</h3>
+        <ol class="breadcrumb__list"><li class="breadcrumb__list-item is-responsive__item"><a href="https://younglinux.info/" class="breadcrumb__link">Главная</a></li><li class="breadcrumb__list-item is-responsive__item"><a href="https://younglinux.info/python" class="breadcrumb__link">Python. Обучение программировани...</a></li><li class="breadcrumb__list-item is-responsive__item"><a href="https://younglinux.info/python/task" class="breadcrumb__link">Решение задач на Python</a></li></ol>
+      </div>
+    </nav>
+  </div></div>
+</div>
+</div>
+    </div>
+  </div>
+  
+</div>
+<div data-at-row="main" class="l-main l-row">
+  
+  <div class="l-pr page__row pr-main regions-multiple" id="main-content">
+    <div class="l-rw regions container pr-main__rw arc--2 hr--1-3" data-at-regions="">
+      <div data-at-region="1" data-at-block-count="4" class="l-r region pr-main__content"><a id="main-content" tabindex="-1"></a>
+<main id="block-second-content" class="l-bl block block-main-content" role="main">
+  
+  <article data-history-node-id="97" role="article" about="/python/task/chr" class="node node--id-97 node--type-python-task node--promoted node--view-mode-full">
+  <div class="node__container">
+
+    <header class="node__header"><h1 class="node__title"><span class="field field-name-title field-formatter-string field-type-string field-label-hidden">Вывод таблицы символов (английской и русской)</span>
+</h1></header>
+
+    <div class="node__content">
+    
+<script async="" src="./Вывод таблицы символов (английской и русской)_files/f.txt"></script>
+<!-- linux_top -->
+<ins class="adsbygoogle ad_top" style="display:block" data-ad-client="ca-pub-4587725615773462" data-ad-slot="8642904531"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><div class="clearfix text-formatted field field-node--body field-formatter-text-default field-name-body field-type-text-with-summary field-label-hidden has-single"><div class="field__items"><div class="field__item"><p>В Python v.3 для строк используется кодировка Unicode. (Следует помнить, что в Python, в отличие от других языков программирования, вообще нет такого типа как одиночный символ; любой символ это строка, длина которой равна 1.)</p>
+
+<p>Первые 128 символов по таблице Unicode такие же как и в таблице символов ASCII. Выведим их (начиная с пробела - 32-й символ). Чтобы привести вывод к табличной форме будем переходить на новую строку после каждого десятого символа (инструкция if в коде ниже).</p>
+
+<p>Функция chr() возвращает символ из таблицы Unicode, соответствующий переданному коду-числу.</p>
+
+<div class="geshifilter"><pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span><span style="color: #ff4500;">32</span><span style="color: #66cc66;">,</span><span style="color: #ff4500;">128</span><span style="color: black;">)</span>:
+	<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span><span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span><span style="color: #66cc66;">,</span> end<span style="color: #66cc66;">=</span><span style="color: #483d8b;">' '</span><span style="color: black;">)</span>
+	<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: black;">(</span>i-<span style="color: #ff4500;">2</span><span style="color: black;">)</span> % <span style="color: #ff4500;">10</span> <span style="color: #66cc66;">==</span> <span style="color: #ff4500;">0</span>:
+		<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span><span style="color: black;">)</span>
+&nbsp;
+<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span><span style="color: black;">)</span></pre></div>
+
+<p>Результат выполнения кода:</p>
+
+<pre>  
+! " # $ % &amp; ' ( ) * 
++ , - . / 0 1 2 3 4 
+5 6 7 8 9 : ; &lt; = &gt; 
+? @ A B C D E F G H 
+I J K L M N O P Q R 
+S T U V W X Y Z [ \ 
+] ^ _ ` a b c d e f 
+g h i j k l m n o p 
+q r s t u v w x y z 
+{ | } ~  
+</pre>
+
+<p>Но допустим, нам захотелось или потребовалось узнать коды символов русских букв (кирилицы). Таблица Unicode очень большая и включает почти все алфавиты Земли. Однако предположим, что кирилица должна быть закодирована где-то в начале таблицы (ведь русский - один из распространенных языков мира). Переберем коды символов от 256 до 10000), и если какой-либо код из этого диапазона соответствует русской букве (прописной или строчной), то выведем на экран сам код и букву, которой он соответствует.</p>
+
+<div class="geshifilter"><pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span><span style="color: #ff4500;">256</span><span style="color: #66cc66;">,</span><span style="color: #ff4500;">10000</span><span style="color: black;">)</span>:
+	<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #483d8b;">'а'</span><span style="color: #66cc66;">&lt;=</span><span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span><span style="color: #66cc66;">&lt;=</span><span style="color: #483d8b;">'я'</span> <span style="color: #ff7700;font-weight:bold;">or</span> <span style="color: #483d8b;">'А'</span><span style="color: #66cc66;">&lt;=</span><span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span><span style="color: #66cc66;">&lt;=</span><span style="color: #483d8b;">'Я'</span>:
+		<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span>i<span style="color: #66cc66;">,</span><span style="color: #483d8b;">'-'</span><span style="color: #66cc66;">,</span> <span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span><span style="color: black;">)</span></pre></div>
+
+<p>Результат выполнения кода:</p>
+
+<pre>1040 - А
+1041 - Б
+1042 - В
+1043 - Г
+1044 - Д
+1045 - Е
+1046 - Ж
+1047 - З
+1048 - И
+1049 - Й
+1050 - К
+1051 - Л
+1052 - М
+1053 - Н
+1054 - О
+1055 - П
+1056 - Р
+1057 - С
+1058 - Т
+1059 - У
+1060 - Ф
+1061 - Х
+1062 - Ц
+1063 - Ч
+1064 - Ш
+1065 - Щ
+1066 - Ъ
+1067 - Ы
+1068 - Ь
+1069 - Э
+1070 - Ю
+1071 - Я
+1072 - а
+1073 - б
+1074 - в
+1075 - г
+1076 - д
+1077 - е
+1078 - ж
+1079 - з
+1080 - и
+1081 - й
+1082 - к
+1083 - л
+1084 - м
+1085 - н
+1086 - о
+1087 - п
+1088 - р
+1089 - с
+1090 - т
+1091 - у
+1092 - ф
+1093 - х
+1094 - ц
+1095 - ч
+1096 - ш
+1097 - щ
+1098 - ъ
+1099 - ы
+1100 - ь
+1101 - э
+1102 - ю
+1103 - я
+</pre>
+
+<p>Теперь мы знаем коды русских букв по таблице Unicode. Но вывод получился какой-то некомпактный. К тому же мы видим, что буквы алфавита идут одна за другой. Поэтому достаточно сначала узнать только код первой большой буквы алфавита (прописные символы идут всегда впереди строчных) и код последней маленькой буквы алфавита. Кроме того, если мы нашли коды символов, то незачем далее продолжать цикл. Поэтому перепишем программу следующим образом:</p>
+
+<div class="geshifilter"><pre class="python geshifilter-python" style="font-family:monospace;">first <span style="color: #66cc66;">=</span> <span style="color: #ff4500;">0</span>
+last <span style="color: #66cc66;">=</span> <span style="color: #ff4500;">0</span>
+<span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span><span style="color: #ff4500;">255</span><span style="color: #66cc66;">,</span><span style="color: #ff4500;">10000</span><span style="color: black;">)</span>:
+	<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span> <span style="color: #66cc66;">==</span> <span style="color: #483d8b;">'А'</span>:
+		first <span style="color: #66cc66;">=</span> i
+	<span style="color: #ff7700;font-weight:bold;">elif</span> <span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span> <span style="color: #66cc66;">==</span> <span style="color: #483d8b;">'я'</span>:
+		last <span style="color: #66cc66;">=</span> i
+		<span style="color: #ff7700;font-weight:bold;">break</span> <span style="color: #808080; font-style: italic;"># выход из цикла</span>
+&nbsp;
+j <span style="color: #66cc66;">=</span> <span style="color: #ff4500;">0</span>		
+<span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span>first<span style="color: #66cc66;">,</span>last+<span style="color: #ff4500;">1</span><span style="color: black;">)</span>:
+	<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span>i<span style="color: #66cc66;">,</span><span style="color: #483d8b;">'-'</span><span style="color: #66cc66;">,</span> <span style="color: #008000;">chr</span><span style="color: black;">(</span>i<span style="color: black;">)</span><span style="color: #66cc66;">,</span> end<span style="color: #66cc66;">=</span><span style="color: #483d8b;">' '</span><span style="color: black;">)</span>
+	j +<span style="color: #66cc66;">=</span> <span style="color: #ff4500;">1</span>
+	<span style="color: #ff7700;font-weight:bold;">if</span> j%<span style="color: #ff4500;">10</span> <span style="color: #66cc66;">==</span> <span style="color: #ff4500;">0</span>: <span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span><span style="color: black;">)</span>
+&nbsp;
+<span style="color: #ff7700;font-weight:bold;">print</span><span style="color: black;">(</span><span style="color: black;">)</span></pre></div>
+
+<p>Результат выполнения кода:</p>
+
+<pre>1040 - А 1041 - Б 1042 - В 1043 - Г 1044 - Д 1045 - Е 1046 - Ж 1047 - З 1048 - И 1049 - Й 
+1050 - К 1051 - Л 1052 - М 1053 - Н 1054 - О 1055 - П 1056 - Р 1057 - С 1058 - Т 1059 - У 
+1060 - Ф 1061 - Х 1062 - Ц 1063 - Ч 1064 - Ш 1065 - Щ 1066 - Ъ 1067 - Ы 1068 - Ь 1069 - Э 
+1070 - Ю 1071 - Я 1072 - а 1073 - б 1074 - в 1075 - г 1076 - д 1077 - е 1078 - ж 1079 - з 
+1080 - и 1081 - й 1082 - к 1083 - л 1084 - м 1085 - н 1086 - о 1087 - п 1088 - р 1089 - с 
+1090 - т 1091 - у 1092 - ф 1093 - х 1094 - ц 1095 - ч 1096 - ш 1097 - щ 1098 - ъ 1099 - ы 
+1100 - ь 1101 - э 1102 - ю 1103 - я </pre>
+</div></div>
+</div>
+<div class="field field-node--field-date-create field-formatter-datetime-default field-name-field-date-create field-type-datetime field-label-inline clearfix has-single"><h3 class="field__label">Создано</h3><div class="field__items"><div class="field__item"><time datetime="2013-12-17T12:00:00Z" class="datetime">2013-12-17</time>
+</div></div>
+</div>
+<div class="node__links"><ul class="links inline"><li class="comment-add"><span class="comment-add__link-wrapper"><a href="https://younglinux.info/comment/reply/node/97/comment#comment-form" title="Поделитесь своими мыслями и мнениями." class="comment-add__link">Добавить комментарий</a></span></li></ul></div><script async="" src="./Вывод таблицы символов (английской и русской)_files/f.txt"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-4587725615773462" data-ad-slot="5014011973"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div><section class="field field-node--comment field-formatter-comment-default field-name-comment field-type-comment field-label-above display-mode-threaded comment-bundle-comment comment-wrapper">
+  <a name="comments"></a></section>
+</div>
+</article>
+
+  
+</main>
+</div><div data-at-region="3" data-at-block-count="1" class="l-r region pr-main__sidebar-second"><nav role="navigation" aria-labelledby="block-python-block-menu" id="block-python-block" class="l-bl block block-menu block-config-provider--system block-plugin-id--system-menu-block-python has-title">
+  <div class="block__inner block-menu__inner">
+
+    
+    <h2 class="block__title block-menu__title" id="block-python-block-menu"><span>Python</span></h2>
+    <div class="block__content block-menu__content">
+    <ul class="menu odd menu-level-1 menu-name--python">      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--введение-в-программирование-курс" id="mlid-введение-в-программирование-курс">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python.php" class="menu__link" data-drupal-link-system-path="node/3">Введение в программирование. Курс</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--объектно-ориентированное-программирование-на-python-курс" id="mlid-объектно-ориентированное-программирование-на-python-курс">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/oopython.php" class="menu__link" data-drupal-link-system-path="node/19">Объектно-ориентированное программирование на Python. Курс</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--tkinter-программирование-gui-на-python-курс" id="mlid-tkinter-программирование-gui-на-python-курс">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/tkinter.php" class="menu__link" data-drupal-link-system-path="node/31">Tkinter. Программирование GUI на Python. Курс</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--pygame-введение-в-разработку-игр-на-python-курс" id="mlid-pygame-введение-в-разработку-игр-на-python-курс">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/pygame" class="menu__link" data-drupal-link-system-path="node/500">Pygame. Введение в разработку игр на Python. Курс</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--известные-алгоритмы-на-python" id="mlid-известные-алгоритмы-на-python">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/algorithm" class="menu__link" data-drupal-link-system-path="node/43">Известные алгоритмы на Python</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--примеры-программ" id="mlid-примеры-программ">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/tkinter" class="menu__link" data-drupal-link-system-path="node/55">Примеры программ</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--особенности-и-модули-python-заметки" id="mlid-особенности-и-модули-python-заметки">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/feature" class="menu__link" data-drupal-link-system-path="node/58">Особенности и модули Python. Заметки</a>
+        </span>
+
+        
+      </li>                    
+                          
+      
+            <li class="menu__item is-parent menu__item--expanded menu__item--active-trail menu__item-title--решение-задач" id="mlid-решение-задач">
+
+        <span class="menu__link--wrapper is-parent__wrapper">
+          <a href="https://younglinux.info/python/task" class="menu__link" data-drupal-link-system-path="node/64">Решение задач</a>
+        </span>
+
+                  
+    <ul class="menu is-child even menu-level-2">      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--линейные-алгоритмы" id="mlid-линейные-алгоритмы">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/equation-line" class="menu__link" data-drupal-link-system-path="node/76">Линейные алгоритмы</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--условный-оператор" id="mlid-условный-оператор">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/positive-negative-number" class="menu__link" data-drupal-link-system-path="node/86">Условный оператор</a>
+        </span>
+
+        
+      </li>                    
+                          
+      
+            <li class="menu__item is-parent menu__item--expanded menu__item--active-trail menu__item-title--циклы" id="mlid-циклы">
+
+        <span class="menu__link--wrapper is-parent__wrapper">
+          <a href="https://younglinux.info/python/task/turnover-number" class="menu__link" data-drupal-link-system-path="node/91">Циклы</a>
+        </span>
+
+                  
+    <ul class="menu is-child odd menu-level-3">      
+                          
+      
+            <li class="menu__item menu__item-title--перевернуть-число" id="mlid-перевернуть-число">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/turnover-number" class="menu__link" data-drupal-link-system-path="node/91">"Перевернуть" число</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--возведение-чисел-в-степень-до-заданного-предела" id="mlid-возведение-чисел-в-степень-до-заданного-предела">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/power-number" class="menu__link" data-drupal-link-system-path="node/99">Возведение чисел в степень до заданного предела</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--вывод-таблицы-значений-функции" id="mlid-вывод-таблицы-значений-функции">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/function-xy" class="menu__link" data-drupal-link-system-path="node/100">Вывод таблицы значений функции</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--active-trail menu__item-title--вывод-таблицы-символов" id="mlid-вывод-таблицы-символов">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/chr" class="menu__link is-active" data-drupal-link-system-path="node/97">Вывод таблицы символов</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--найти-все-возможные-корни-уравнения" id="mlid-найти-все-возможные-корни-уравнения">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/search-roots" class="menu__link" data-drupal-link-system-path="node/92">Найти все возможные корни уравнения</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--найти-сумму-n-элементов-ряда-1--05-025--0125-" id="mlid-найти-сумму-n-элементов-ряда-1--05-025--0125-">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/epsilon" class="menu__link" data-drupal-link-system-path="node/95">Найти сумму n-элементов ряда 1, -0.5, 0.25, -0.125, ...</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--найти-сумму-и-количество-элементов-последовательности-которые-по-модулю-больше-0001" id="mlid-найти-сумму-и-количество-элементов-последовательности-которые-по-модулю-больше-0001">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/epsilon1" class="menu__link" data-drupal-link-system-path="node/96">Найти сумму и количество элементов последовательности, которые по модулю больше 0.001</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--определить-количество-простых-чисел" id="mlid-определить-количество-простых-чисел">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/prime-numbers" class="menu__link" data-drupal-link-system-path="node/94">Определить количество простых чисел</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--посчитать-сумму-и-произведение-цифр-числа" id="mlid-посчитать-сумму-и-произведение-цифр-числа">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/sum-mult" class="menu__link" data-drupal-link-system-path="node/98">Посчитать сумму и произведение цифр числа</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--посчитать-четные-и-нечетные-цифры-числа" id="mlid-посчитать-четные-и-нечетные-цифры-числа">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/even-odd" class="menu__link" data-drupal-link-system-path="node/90">Посчитать четные и нечетные цифры числа</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--проверка-гипотезы-сиракуз" id="mlid-проверка-гипотезы-сиракуз">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/siracus" class="menu__link" data-drupal-link-system-path="node/93">Проверка гипотезы Сиракуз</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--программа-простейший-калькулятор" id="mlid-программа-простейший-калькулятор">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/calculator" class="menu__link" data-drupal-link-system-path="node/101">Программа "Простейший калькулятор"</a>
+        </span>
+
+        
+      </li></ul>
+  
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--списки-и-кортежи" id="mlid-списки-и-кортежи">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/list-spiral" class="menu__link" data-drupal-link-system-path="node/111">Списки и кортежи</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--строки" id="mlid-строки">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/replace-space" class="menu__link" data-drupal-link-system-path="node/123">Строки</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--функции" id="mlid-функции">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/matrix-subtraction" class="menu__link" data-drupal-link-system-path="node/127">Функции</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item--collapsed menu__item-title--файлы" id="mlid-файлы">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/python/task/distance" class="menu__link" data-drupal-link-system-path="node/141">Файлы</a>
+        </span>
+
+        
+      </li></ul>
+  
+        
+      </li></ul>
+  
+
+</div></div>
+</nav>
+</div>
+    </div>
+  </div>
+  
+</div>
+<div data-at-row="footer" class="l-footer l-row">
+  
+  <footer class="l-pr page__row pr-footer" role="contentinfo" id="footer">
+    <div class="l-rw regions container pr-footer__rw arc--1 hr--1" data-at-regions="">
+      <div data-at-region="1" data-at-block-count="1" class="l-r region pr-footer__footer"><nav role="navigation" aria-labelledby="block-second-footer-menu" id="block-second-footer" class="l-bl block block-menu block-config-provider--system block-plugin-id--system-menu-block-footer">
+  <div class="block__inner block-menu__inner">
+
+    
+    <h2 class="visually-hidden block__title block-menu__title" id="block-second-footer-menu"><span>Footer menu</span></h2>
+    <div class="block__content block-menu__content">
+    <ul class="menu odd menu-level-1 menu-name--footer">      
+                          
+      
+            <li class="menu__item menu__item-title--главная" id="mlid-главная">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/" class="menu__link" data-drupal-link-system-path="&lt;front&gt;">Главная</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--о-сайте" id="mlid-о-сайте">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/about.php" class="menu__link" data-drupal-link-system-path="node/473">О сайте</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--контакт" id="mlid-контакт">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/contact" class="menu__link" data-drupal-link-system-path="contact">Контакт</a>
+        </span>
+
+        
+      </li>      
+                          
+      
+            <li class="menu__item menu__item-title--другие-сайты" id="mlid-другие-сайты">
+
+        <span class="menu__link--wrapper">
+          <a href="https://younglinux.info/informatics" class="menu__link" data-drupal-link-system-path="node/474">Другие сайты</a>
+        </span>
+
+        
+      </li></ul>
+  
+
+</div></div>
+</nav>
+</div>
+    </div>
+  </footer>
+  
+</div>
+
+  
+</div>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"ajaxPageState":{"theme":"second","libraries":"asset_injector\/css\/adsense,asset_injector\/css\/dl_dt_dd,asset_injector\/css\/menu_active,at_core\/at.accordion,at_core\/at.breakpoints,at_core\/at.responsivelists,at_core\/at.responsivemenus,at_core\/at.settings,ckeditor_spoiler\/ckeditor_spoiler,geshifilter\/geshifilter,second\/base,second\/book,second\/ckeditor,second\/color,second\/comment,second\/contact,second\/custom_css,second\/custom_css_file,second\/fontfaceobserver,second\/fonts,second\/google_fonts,second\/jquery_ui,second\/language,second\/responsive_menus,second\/responsive_menus_accordion,second\/responsive_menus_dropmenu,second\/responsive_menus_slidedown,second\/responsive_tables,second\/search,second\/second.layout.page,second\/taxonomy,system\/base"},"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/97","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"ru"},"pluralDelimiter":"\u0003","second":{"at_responsivemenus":{"bp":"all and (min-width: 60.0625em)","default":"ms-slidedown","responsive":"ms-dropmenu","acd":{"acd_load":true,"acd_default":true,"acd_responsive":false,"acd_both":false}},"at_breakpoints":{"at_core_simple_wide":{"breakpoint":"wide","mediaquery":"all and (min-width: 60.0625em)"},"at_core_simple_tablet-isolate":{"breakpoint":"tablet-isolate","mediaquery":"all and (min-width: 45.0625em) and (max-width: 60em)"},"at_core_simple_mobile":{"breakpoint":"mobile","mediaquery":"all and (max-width: 45em)"}}},"user":{"uid":0,"permissionsHash":"8a40d5667eea3065dbff882ef608d41f65b4ef6c4eef5f59a221823cd9f42b82"}}</script>
+<script src="./Вывод таблицы символов (английской и русской)_files/js_9dr8IixOwIL23hIWI0G46z2t9HboE_HpzBQRcTyiEW0.js.Без названия"></script>
+<script src="./Вывод таблицы символов (английской и русской)_files/fontfaceobserver.js.Без названия"></script>
+<script src="./Вывод таблицы символов (английской и русской)_files/js_lFeQY8A6DwLyv6UJ3ojfeBeSJEIbw0zywN_bnIh9v4M.js.Без названия"></script>
+<script src="./Вывод таблицы символов (английской и русской)_files/enquire.min.js.Без названия"></script>
+<script src="./Вывод таблицы символов (английской и русской)_files/js_XOhVg15WJdgoBOZbeUSenx6rphR5KgKVPQPxYgaK0zg.js.Без названия"></script>
+
+  
+
+</body></html>
