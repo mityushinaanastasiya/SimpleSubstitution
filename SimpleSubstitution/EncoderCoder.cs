@@ -19,10 +19,8 @@ namespace SimpleSubstitution
 
         public int readSymbol (StreamReader streamReaderPlanText)
         {
-            if (streamReaderPlanText.Peek() != 0)
+            if (streamReaderPlanText.Peek() != -1)
             {
-                //char[] bf = new char[1];
-                //streamReaderPlanText.Read(bf, 0, 1);
                 return streamReaderPlanText.Read();
             }
             else
@@ -33,26 +31,28 @@ namespace SimpleSubstitution
 
         public string getCode(int? currentSymbol, StreamReader streamReaderKey)
         {
+            int peekSymbol = streamReaderKey.Peek();
             while (streamReaderKey.Peek() != currentSymbol)
             {
-                switch (streamReaderKey.Peek())
+                switch (peekSymbol)
                 {
                     case -1:
-                        streamReaderKey = new StreamReader(keyPath, Encoding.Default);
-                        //streamReaderKey.BaseStream.Position = 0;                  
+                        //streamReaderKey = new StreamReader(keyPath, Encoding.Default);
+                        streamReaderKey.BaseStream.Position = 0;                  
                         line = 1;
                         position = 1;
-                        streamReaderKey.Read();
-                        position++;
+                        peekSymbol = streamReaderKey.Read();
                         break;
                     case 10:
                         line++;
                         position = 1;
                         streamReaderKey.Read();
+                        peekSymbol = streamReaderKey.Peek();
                         break;
                     default:
                         streamReaderKey.Read();
                         position++;
+                        peekSymbol = streamReaderKey.Peek();
                         break;
                 }
             }
